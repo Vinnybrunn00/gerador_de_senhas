@@ -7,7 +7,6 @@ import sys
 limpar = os.system('cls' if os.name == 'nt' else 'clear')
 os.system(limpar)
 
-
 banner = fg.figlet_format("PASS")
 print(banner)
 
