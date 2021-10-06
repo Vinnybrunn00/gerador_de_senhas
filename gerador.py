@@ -4,7 +4,8 @@ import time
 import os
 import sys
 
-os.system('cls' if os.name == 'nt' else 'clear')
+limpar = os.system('cls' if os.name == 'nt' else 'clear')
+os.system(limpar)
 
 
 banner = fg.figlet_format("PASS")
@@ -13,14 +14,14 @@ print(banner)
 while True:
     try:
         entrada = input("\n➤ Digite 1 para gerar uma senha: ")
-        os.system('cls' if os.name == 'nt' else 'clear')
+        os.system(limpar)
         if not entrada.isdigit():
 
             print(f'\033[1;31m\n"{entrada}" está errado, Digite 1')
 
         else:
             if entrada == "1":
-                os.system('cls' if os.name == 'nt' else 'clear')
+                os.system(limpar)
                 rede_social = input("Escolha a Rede Social: ")
                 minusculas = input("\nDigite letras maiúsculas: ")
                 maiusculas = input("Digite letras minúsculas: ")
