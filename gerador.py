@@ -1,54 +1,44 @@
 import random as rd
-import pyfiglet as fg
+from rich import print
 import time
-import os
 import sys
+import os
 
-limpar = os.system('cls' if os.name == 'nt' else 'clear')
+limpar = 'cls' if os.name == 'nt' else 'clear'
 os.system(limpar)
 
-banner = fg.figlet_format("PASS")
-print(banner)
+def Pass():
+    while True:
+        try:   
+            rede_social = str(input('Nome da rede social: '))
+            minusculas = str(input('Digite letras minusculas: '))
+            maiusculas = str(input('Digite letras Maiusculas: '))
+            numeros = input('Digite números: ')
+            caracteres = input('Digite caracteres: ')
 
-while True:
-    try:
-        entrada = input("\n➤ Digite 1 para gerar uma senha: ")
-        os.system(limpar)
-        if not entrada.isdigit():
+            value = minusculas + maiusculas + numeros + caracteres
+            tamanho = 13
+            password = "".join(rd.sample(value, tamanho))
+            print(
+                'Digite "SIM" se querer salvar a senha em um arquivo.'
+                )
+            qq = str(input('Opção: '))
 
-            print(f'\033[1;31m\n"{entrada}" está errado, Digite 1')
-
-        else:
-            if entrada == "1":
-                os.system(limpar)
-                rede_social = input("Escolha a Rede Social: ")
-                minusculas = input("\nDigite letras maiúsculas: ")
-                maiusculas = input("Digite letras minúsculas: ")
-                numero = input("Digite números: ")
-                caracteres = input("Digite caracteres: ")
-                print("\n")
-                time.sleep(3) 
-
-                todos = minusculas + maiusculas + numero + caracteres
-                tamanho = 13
-                senha = "".join(rd.sample(todos, tamanho))
-
-                carregar = '===================================]'
-                print("GERANDO SENHA [", end='')
-                for v in list(carregar):
-                    print(v, end='')
-                    sys.stdout.flush()
-                    time.sleep(00.1)
-
-                print(f"\n\n                            SENHA\n \033[1;31m                       {senha}")
-
+            if (qq == 'SIM') or (qq == 'sim'):    
                 with open(f'{rede_social}.txt', 'a') as arquivo:
-                    print(f'{senha}', file=arquivo)
-
-                time.sleep(1.0)
-
+                    print(f'{password}', file=arquivo)
+                    print(
+                        '[green]Senha salva com sucesso[/] :heavy_check_mark:'
+                        )
+                    break
             else:
-                print('ERROR!!!')
+                os.system(limpar)
+                print('\nAdeus :) :wave:')
+                break
 
-    except ValueError:
-        print("Letras inválidas")
+        except:
+            os.system(limpar)
+            print('[red]Erro, tente novamente[/] :x: \n\n')
+            time.sleep(3)
+            
+Pass()
