@@ -1,5 +1,6 @@
 random
 pyfiglet
 time
+rich
 os
 sys
